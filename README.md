@@ -40,14 +40,14 @@ My interests span **Artificial Intelligence**, **Data Science**, **Data Analysis
 
 ---
 
-# 🚀 Founder Portfolio
+<h1 align="center">🚀 Founder Portfolio</h1>
 
 <table>
 <tr>
 
 <td width="33%" align="center">
 
-## 🚀 SkillInterns
+<h1 align="center">🚀 SkillInterns</h1>
 
 A virtual internship platform designed to bridge the gap between academic learning and industry experience through project-based internships.
 
@@ -61,7 +61,7 @@ A virtual internship platform designed to bridge the gap between academic learni
 
 <td width="33%" align="center">
 
-## 📚 DakshaLearn
+<h1 align="center">📚 DakshaLearn</h1>
 
 An online learning platform providing industry-oriented courses, assessments, and certificates to support continuous learning.
 
@@ -75,7 +75,7 @@ An online learning platform providing industry-oriented courses, assessments, an
 
 <td width="33%" align="center">
 
-## 🎓 TruthCampus
+<h1 align="center">🎓 TruthCampus</h1>
 
 A student-focused platform that aims to simplify career guidance, educational resources, and professional growth opportunities.
 
