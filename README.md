@@ -92,7 +92,7 @@ A student-focused platform that aims to simplify career guidance, educational re
 
 ---
 
-# 💫 About Me
+<h1 align="center">💫 About Me</h1>
 
 ```text
 🎓 B.Tech Data Science Student
@@ -116,7 +116,7 @@ A student-focused platform that aims to simplify career guidance, educational re
 
 ---
 
-# 🌟 What Drives Me
+<h1 align="center">🌟 What Drives Me</h1>
 
 * 🚀 Building software that solves real-world problems
 * 🤖 Exploring Artificial Intelligence and Data Science
@@ -127,7 +127,7 @@ A student-focused platform that aims to simplify career guidance, educational re
 
 ---
 
-# 🧭 Vision
+<h1 align="center">🧭 Vision</h1>
 
 > **"Technology should create opportunities, simplify learning, and empower every student to achieve their full potential."**
 
@@ -140,7 +140,7 @@ A student-focused platform that aims to simplify career guidance, educational re
 <img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&height=3"/>
 
 </div>
-💻 Tech Stack
+<h1 align="center">💻 Tech Stack</h1>
 
 <div align="center">
 
@@ -188,7 +188,7 @@ A student-focused platform that aims to simplify career guidance, educational re
 
 ---
 
-# 🚀 Areas of Expertise
+<h1 align="center">🚀 Areas of Expertise</h1>
 
 <div align="center">
 
@@ -206,7 +206,7 @@ A student-focused platform that aims to simplify career guidance, educational re
 
 ---
 
-# 📈 GitHub Analytics
+<h1 align="center">📈 GitHub Analytics</h1>
 
 <div align="center">
 
@@ -220,7 +220,7 @@ A student-focused platform that aims to simplify career guidance, educational re
 
 ---
 
-# 🔥 GitHub Streak
+<h1 align="center">🔥 GitHub Streak</h1>
 
 <div align="center">
 
@@ -230,7 +230,7 @@ A student-focused platform that aims to simplify career guidance, educational re
 
 ---
 
-# 📊 Contribution Activity
+<h1 align="center">📊 Contribution Activity</h1>
 
 <div align="center">
 
@@ -240,7 +240,7 @@ A student-focused platform that aims to simplify career guidance, educational re
 
 ---
 
-# 🏆 GitHub Achievements
+<h1 align="center">🏆 GitHub Achievements</h1>
 
 <div align="center">
 
@@ -252,14 +252,14 @@ A student-focused platform that aims to simplify career guidance, educational re
 
 ---
 
-# 📌 Featured Projects
+<h1 align="center">📌 Featured Projects</h1>
 
 <table>
 <tr>
 
 <td align="center" width="33%">
 
-### 🚀 SkillInterns
+<h1 align="center">🚀 SkillInterns</h1>
 
 Virtual Internship Platform
 
@@ -271,7 +271,7 @@ Virtual Internship Platform
 
 <td align="center" width="33%">
 
-### 📚 DakshaLearn
+<h1 align="center">📚 DakshaLearns</h1>
 
 Learning Management Platform
 
@@ -283,7 +283,7 @@ Learning Management Platform
 
 <td align="center" width="33%">
 
-### 🎓 TruthCampus
+<h1 align="center">🎓 TruthCampus</h1>
 
 Student Career Platform
 
@@ -298,7 +298,7 @@ Student Career Platform
 
 ---
 
-# 🎯 Current Focus
+<h1 align="center">🎯 Current Focus</h1>
 
 ```text
 🚀 Building scalable educational platforms
@@ -316,7 +316,7 @@ Student Career Platform
 
 ---
 
-# 🌐 Connect With Me
+<h1 align="center">🌐 Connect With Me</h1>
 
 <div align="center">
 
@@ -342,14 +342,14 @@ Student Career Platform
 
 > **"Building products that create opportunities, inspire learning, and make a lasting impact through technology."**
 
-# 🐍 Contribution Snake
+<h1 align="center">🐍 Contribution Snake</h1>
 
 <p align="center">
 
 <img src="https://raw.githubusercontent.com/Abhilash-4143/Abhilash-4143/output/github-contribution-grid-snake.svg"/>
 
 </p>
-📊 Profile Summary
+<h3 align="center">📊 Profile Summary</h3>
 
 <div align="center">
 
@@ -357,7 +357,7 @@ Student Career Platform
 
 </div>
 
-📈 Repository Statistics
+<h3 align="center">📈 Repository Statistics</h3>
 
 <div align="center">
 
@@ -367,7 +367,7 @@ Student Career Platform
 
 </div>
 
-⚡ Development Metrics
+<h3 align="center">⚡ Development Metrics</h3>
 
 <div align="center">
 
@@ -377,7 +377,7 @@ Student Career Platform
 
 </div>
 
-🎖️ Achievements
+<h3 align="center">🎖️ Achievements</h3>
 
 <div align="center">
 
@@ -391,7 +391,7 @@ Student Career Platform
 
 </div>
 
-💡 Favorite Quote
+<h3 align="center">💡 Favorite Quote</h3>
 
 <div align="center">
 
