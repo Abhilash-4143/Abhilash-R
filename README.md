@@ -140,7 +140,7 @@ A student-focused platform that aims to simplify career guidance, educational re
 <img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&height=3"/>
 
 </div>
-## 💻 Tech Stack
+💻 Tech Stack
 
 <div align="center">
 
