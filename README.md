@@ -1,8 +1,11 @@
-# <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="35"> Hey there, I'm Abhilash R
-
+```markdown
 <div align="center">
 
-<img src="https://readme-typing-svg.demolab.com?font=Poppins&weight=600&size=28&pause=1000&color=3B82F6&center=true&vCenter=true&width=900&lines=Founder+of+SkillInterns;Building+DakshaLearn+%26+TruthCampus;Data+Science+Engineer;AI+%7C+Data+Analytics+%7C+Full+Stack+Developer;Turning+Ideas+Into+Real+Products+%F0%9F%9A%80" />
+# <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="35"> Hello World! I'm Abhilash R
+
+<img src="https://capsule-render.vercel.app/api?type=waving&height=250&color=0:2563EB,50:4F46E5,100:7C3AED&text=Abhilash%20R&fontColor=ffffff&fontSize=55&animation=fadeIn&fontAlignY=40&desc=Founder%20%7C%20Data%20Science%20Student%20%7C%20Product%20Builder&descAlignY=60"/>
+
+<img src="https://readme-typing-svg.demolab.com?font=Poppins&weight=600&size=28&pause=1200&color=3B82F6&center=true&vCenter=true&width=900&lines=Founder+of+SkillInterns;Creator+of+DakshaLearn;Founder+of+TruthCampus;Data+Science+Student;AI+%7C+Full+Stack+Developer;Building+Technology+that+Empowers+Students"/>
 
 <p align="center">
 
@@ -10,27 +13,27 @@
 <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"/>
 </a>
 
-<a href="https://skillinterns.vercel.app">
+<a href="https://skillinterns.vercel.app/">
 <img src="https://img.shields.io/badge/SkillInterns-2563EB?style=for-the-badge"/>
 </a>
 
-<a href="https://dakshalearn.vercel.app">
+<a href="https://dakshalearn.vercel.app/">
 <img src="https://img.shields.io/badge/DakshaLearn-10B981?style=for-the-badge"/>
 </a>
 
-<a href="https://truth-campus.vercel.app">
+<a href="https://truth-campus.vercel.app/">
 <img src="https://img.shields.io/badge/TruthCampus-9333EA?style=for-the-badge"/>
 </a>
 
 </p>
 
-<img src="https://komarev.com/ghpvc/?username=Abhilash-4143&style=for-the-badge&color=blue"/>
+<img src="https://komarev.com/ghpvc/?username=Abhilash-4143&label=Profile+Views&style=for-the-badge&color=0e75b6"/>
 
 </div>
 
 ---
 
-# 🚀 About Me
+# 💫 About Me
 
 🎓 B.Tech Data Science Student
 
@@ -40,31 +43,46 @@
 
 I enjoy transforming ideas into impactful digital platforms that help students learn, build portfolios, gain internships, and advance their careers.
 
+My focus areas include:
+
+- Artificial Intelligence
+- Data Science
+- Data Analytics
+- Full Stack Development
+- Product Development
+- Startup Building
+
 ---
 
-# 🌟 Currently Building
+# 🚀 My Products
 
 ## 🚀 SkillInterns
 
-A modern virtual internship platform helping students gain real project experience through industry-focused internship programs.
+A virtual internship platform connecting students with industry-oriented internship experiences and project-based learning.
+
+🔗 https://skillinterns.vercel.app/
 
 ---
 
 ## 📚 DakshaLearn
 
-An AI-powered Learning Management System offering professional courses, assessments, certificates, and practical learning experiences.
+A modern learning platform providing professional courses, assessments, certificates, and practical learning experiences.
+
+🔗 https://dakshalearn.vercel.app/
 
 ---
 
 ## 🎓 TruthCampus
 
-A student-focused ecosystem designed to simplify learning, career development, internships, and educational opportunities.
+A student career ecosystem designed to simplify learning, career guidance, internships, and educational opportunities.
+
+🔗 https://truth-campus.vercel.app/
 
 ---
 
 # 💻 Tech Stack
 
-### Languages
+## 💻 Languages
 
 <p>
 
@@ -72,17 +90,19 @@ A student-focused ecosystem designed to simplify learning, career development, i
 
 <img src="https://skillicons.dev/icons?i=java"/>
 
-<img src="https://skillicons.dev/icons?i=js"/>
+<img src="https://skillicons.dev/icons?i=php"/>
 
 <img src="https://skillicons.dev/icons?i=html"/>
 
 <img src="https://skillicons.dev/icons?i=css"/>
 
+<img src="https://skillicons.dev/icons?i=c"/>
+
 </p>
 
 ---
 
-### Frameworks
+## ⚙️ Frameworks
 
 <p>
 
@@ -90,13 +110,11 @@ A student-focused ecosystem designed to simplify learning, career development, i
 
 <img src="https://skillicons.dev/icons?i=nodejs"/>
 
-<img src="https://skillicons.dev/icons?i=express"/>
-
 </p>
 
 ---
 
-### Database
+## 🗄️ Database
 
 <p>
 
@@ -104,75 +122,42 @@ A student-focused ecosystem designed to simplify learning, career development, i
 
 <img src="https://skillicons.dev/icons?i=mysql"/>
 
-<img src="https://skillicons.dev/icons?i=mongodb"/>
-
 </p>
 
 ---
 
-### Tools
+## 🛠️ Tools
 
 <p>
-
-<img src="https://skillicons.dev/icons?i=git"/>
 
 <img src="https://skillicons.dev/icons?i=github"/>
 
 <img src="https://skillicons.dev/icons?i=vscode"/>
 
-<img src="https://skillicons.dev/icons?i=figma"/>
+<img src="https://img.shields.io/badge/Antigravity-000000?style=for-the-badge"/>
 
 </p>
 
 ---
 
-# 📊 Areas of Interest
+# 🌱 Interests
 
-🤖 Artificial Intelligence
-
-📈 Machine Learning
-
-📊 Data Analytics
-
-📉 Data Visualization
-
-🌐 Full Stack Development
-
-☁️ Cloud Technologies
-
-🚀 Startup Building
-
-🎯 Product Development
+- 🤖 Artificial Intelligence
+- 📊 Data Science
+- 📈 Data Analytics
+- 🌐 Full Stack Development
+- 🚀 Startup Development
+- ☁️ Cloud Computing
 
 ---
 
-# 🌱 Currently Learning
+# 🎯 Currently Exploring
 
-✔ Advanced Machine Learning
-
-✔ Deep Learning
-
-✔ Large Scale Web Applications
-
-✔ System Design
-
-✔ Cloud Deployment
-
-✔ Product Management
-
----
-
-# 🎯 Looking For
-
-💼 Software Engineering Internships
-
-📊 Data Science Internships
-
-🤝 Open Source Contributions
-
-🚀 Startup Collaborations
-
-🌎 AI Product Development
+- Machine Learning
+- Deep Learning
+- Cloud Deployment
+- Scalable Web Applications
+- Product Engineering
 
 ---
 
@@ -180,9 +165,9 @@ A student-focused ecosystem designed to simplify learning, career development, i
 
 <p align="center">
 
-<img height="170" src="https://github-readme-stats.vercel.app/api?username=Abhilash-4143&show_icons=true&theme=tokyonight&hide_border=true"/>
+<img height="180em" src="https://github-readme-stats.vercel.app/api?username=Abhilash-4143&show_icons=true&theme=tokyonight&hide_border=true&rank_icon=github"/>
 
-<img height="170" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Abhilash-4143&layout=compact&theme=tokyonight&hide_border=true"/>
+<img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Abhilash-4143&layout=compact&theme=tokyonight&hide_border=true"/>
 
 </p>
 
@@ -198,56 +183,34 @@ A student-focused ecosystem designed to simplify learning, career development, i
 
 ---
 
-# 🏆 GitHub Trophies
+# 📊 Contribution Graph
 
 <p align="center">
 
-<img src="https://github-profile-trophy.vercel.app/?username=Abhilash-4143&theme=algolia&row=2&column=4"/>
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=Abhilash-4143&theme=tokyo-night"/>
 
 </p>
 
 ---
 
-# 📈 Contribution Graph
-
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=Abhilash-4143&theme=react-dark"/>
-
----
-
-# 🐍 Contribution Snake
-
-<p align="center">
-
-<img src="https://raw.githubusercontent.com/Abhilash-4143/Abhilash-4143/output/github-contribution-grid-snake.svg"/>
-
-</p>
-
----
-
-# 🚀 Featured Products
-
-| Product | Description |
-|----------|-------------|
-| 🚀 SkillInterns | Virtual Internship Platform |
-| 📚 DakshaLearn | Learning Platform |
-| 🎓 TruthCampus | Student Career Ecosystem |
-
----
-
-# 🌍 Connect With Me
+# 🌐 Connect With Me
 
 <p align="center">
 
 <a href="https://www.linkedin.com/in/01abhilash/">
-<img src="https://skillicons.dev/icons?i=linkedin"/>
+<img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"/>
 </a>
 
-<a href="abhilashg869@gmail.com">
-<img src="https://skillicons.dev/icons?i=gmail"/>
+<a href="https://skillinterns.vercel.app/">
+<img src="https://img.shields.io/badge/SkillInterns-2563EB?style=for-the-badge"/>
 </a>
 
-<a href="https://skillinterns.vercel.app">
-<img src="https://img.shields.io/badge/Website-blue?style=for-the-badge"/>
+<a href="https://dakshalearn.vercel.app/">
+<img src="https://img.shields.io/badge/DakshaLearn-10B981?style=for-the-badge"/>
+</a>
+
+<a href="https://truth-campus.vercel.app/">
+<img src="https://img.shields.io/badge/TruthCampus-9333EA?style=for-the-badge"/>
 </a>
 
 </p>
@@ -262,10 +225,11 @@ A student-focused ecosystem designed to simplify learning, career development, i
 
 <div align="center">
 
-### ⭐ Thanks for visiting my profile!
+### ⭐ Thank you for visiting my profile!
 
-### 🚀 Building the Future, One Commit at a Time.
+### 🚀 Building meaningful products, one commit at a time.
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:2563EB,100:7C3AED&height=120&section=footer"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&height=120&section=footer&color=0:2563EB,100:7C3AED"/>
 
 </div>
+```
