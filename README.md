@@ -399,7 +399,7 @@ Student Career Platform
 
 </div>
 
-🌟 Thank You for Visiting
+<h3 align="center">🌟 Thank You for Visiting</h3>
 
 <div align="center">
 
