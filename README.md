@@ -1,13 +1,12 @@
-```markdown
 <div align="center">
 
-# <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="35"> Hello World! I'm Abhilash R
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&height=320&color=gradient&customColorList=6,11,20,24,30&text=ABHILASH%20R&fontSize=65&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=Founder%20%7C%20Data%20Science%20Student%20%7C%20Product%20Builder&descAlignY=60&descSize=20"/>
 
-<img src="https://capsule-render.vercel.app/api?type=waving&height=250&color=0:2563EB,50:4F46E5,100:7C3AED&text=Abhilash%20R&fontColor=ffffff&fontSize=55&animation=fadeIn&fontAlignY=40&desc=Founder%20%7C%20Data%20Science%20Student%20%7C%20Product%20Builder&descAlignY=60"/>
+<br>
 
-<img src="https://readme-typing-svg.demolab.com?font=Poppins&weight=600&size=28&pause=1200&color=3B82F6&center=true&vCenter=true&width=900&lines=Founder+of+SkillInterns;Creator+of+DakshaLearn;Founder+of+TruthCampus;Data+Science+Student;AI+%7C+Full+Stack+Developer;Building+Technology+that+Empowers+Students"/>
+<img src="https://readme-typing-svg.demolab.com?font=Poppins&weight=700&size=28&duration=3500&pause=1200&color=3B82F6&center=true&vCenter=true&width=1000&lines=Welcome+to+my+GitHub+Profile!;Founder+of+SkillInterns;Creator+of+DakshaLearn;Founder+of+TruthCampus;Data+Science+Student;AI+%7C+Software+Development+%7C+Product+Building;Building+Technology+for+Students+Across+India"/>
 
-<p align="center">
+<br><br>
 
 <a href="https://www.linkedin.com/in/01abhilash/">
 <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"/>
@@ -18,184 +17,308 @@
 </a>
 
 <a href="https://dakshalearn.vercel.app/">
-<img src="https://img.shields.io/badge/DakshaLearn-10B981?style=for-the-badge"/>
+<img src="https://img.shields.io/badge/DakshaLearn-16A34A?style=for-the-badge"/>
 </a>
 
 <a href="https://truth-campus.vercel.app/">
-<img src="https://img.shields.io/badge/TruthCampus-9333EA?style=for-the-badge"/>
+<img src="https://img.shields.io/badge/TruthCampus-7C3AED?style=for-the-badge"/>
 </a>
 
-</p>
+<br><br>
 
-<img src="https://komarev.com/ghpvc/?username=Abhilash-4143&label=Profile+Views&style=for-the-badge&color=0e75b6"/>
+<img src="https://komarev.com/ghpvc/?username=Abhilash-4143&style=for-the-badge&label=PROFILE+VIEWS&color=2563EB"/>
 
 </div>
+
+---
+
+# <img width="30" src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif"> Hello, I'm Abhilash R
+
+I'm a **B.Tech Data Science student** and **Founder of SkillInterns**, passionate about creating products that help students learn practical skills, gain real-world experience, and prepare for successful careers.
+
+My interests span **Artificial Intelligence**, **Data Science**, **Data Analysis**, and **Product Building**, with a strong focus on turning ideas into impactful digital solutions.
+
+---
+
+# 🚀 Founder Portfolio
+
+<table>
+<tr>
+
+<td width="33%" align="center">
+
+## 🚀 SkillInterns
+
+A virtual internship platform designed to bridge the gap between academic learning and industry experience through project-based internships.
+
+<br>
+
+<a href="https://skillinterns.vercel.app/">
+<img src="https://img.shields.io/badge/Visit%20Website-2563EB?style=for-the-badge"/>
+</a>
+
+</td>
+
+<td width="33%" align="center">
+
+## 📚 DakshaLearn
+
+An online learning platform providing industry-oriented courses, assessments, and certificates to support continuous learning.
+
+<br>
+
+<a href="https://dakshalearn.vercel.app/">
+<img src="https://img.shields.io/badge/Explore%20Platform-16A34A?style=for-the-badge"/>
+</a>
+
+</td>
+
+<td width="33%" align="center">
+
+## 🎓 TruthCampus
+
+A student-focused platform that aims to simplify career guidance, educational resources, and professional growth opportunities.
+
+<br>
+
+<a href="https://truth-campus.vercel.app/">
+<img src="https://img.shields.io/badge/Learn%20More-7C3AED?style=for-the-badge"/>
+</a>
+
+</td>
+
+</tr>
+</table>
 
 ---
 
 # 💫 About Me
 
+```text
 🎓 B.Tech Data Science Student
 
-💡 Founder of **SkillInterns**, building products that bridge students with real-world industry experience.
+🚀 Founder of SkillInterns
 
-🚀 Passionate about creating scalable software products powered by Artificial Intelligence, Data Science, and Full-Stack Development.
+📚 Creator of DakshaLearn
 
-I enjoy transforming ideas into impactful digital platforms that help students learn, build portfolios, gain internships, and advance their careers.
+🎓 Founder of TruthCampus
 
-My focus areas include:
+💡 Passionate about AI, Data Science & Product Development
 
-- Artificial Intelligence
-- Data Science
-- Data Analytics
-- Full Stack Development
-- Product Development
-- Startup Building
+🌱 Continuously learning modern technologies
 
----
+🤝 Open to collaboration on meaningful software projects
 
-# 🚀 My Products
+🎯 Interested in building scalable digital products
 
-## 🚀 SkillInterns
-
-A virtual internship platform connecting students with industry-oriented internship experiences and project-based learning.
-
-🔗 https://skillinterns.vercel.app/
+📍 Bengaluru, Karnataka, India
+```
 
 ---
 
-## 📚 DakshaLearn
+# 🌟 What Drives Me
 
-A modern learning platform providing professional courses, assessments, certificates, and practical learning experiences.
-
-🔗 https://dakshalearn.vercel.app/
-
----
-
-## 🎓 TruthCampus
-
-A student career ecosystem designed to simplify learning, career guidance, internships, and educational opportunities.
-
-🔗 https://truth-campus.vercel.app/
+* 🚀 Building software that solves real-world problems
+* 🤖 Exploring Artificial Intelligence and Data Science
+* 💻 Creating user-friendly web applications
+* 📈 Designing products that make learning more accessible
+* 🌍 Contributing to technology that creates opportunities for students
+* 📚 Continuously improving as a developer and entrepreneur
 
 ---
 
-# 💻 Tech Stack
+# 🧭 Vision
 
-## 💻 Languages
+> **"Technology should create opportunities, simplify learning, and empower every student to achieve their full potential."**
+
+---
+
+<div align="center">
+
+### ⭐ Thanks for visiting my profile!
+
+<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&height=3"/>
+
+</div>
+## 💻 Tech Stack
+
+<div align="center">
+
+### 👨‍💻 Languages
 
 <p>
-
-<img src="https://skillicons.dev/icons?i=python"/>
-
-<img src="https://skillicons.dev/icons?i=java"/>
-
-<img src="https://skillicons.dev/icons?i=php"/>
-
-<img src="https://skillicons.dev/icons?i=html"/>
-
-<img src="https://skillicons.dev/icons?i=css"/>
-
-<img src="https://skillicons.dev/icons?i=c"/>
-
+<img src="https://skillicons.dev/icons?i=python" height="55"/>
+<img src="https://skillicons.dev/icons?i=java" height="55"/>
+<img src="https://skillicons.dev/icons?i=php" height="55"/>
+<img src="https://skillicons.dev/icons?i=html" height="55"/>
+<img src="https://skillicons.dev/icons?i=css" height="55"/>
+<img src="https://skillicons.dev/icons?i=c" height="55"/>
 </p>
 
 ---
 
-## ⚙️ Frameworks
+### ⚡ Frameworks & Libraries
 
 <p>
-
-<img src="https://skillicons.dev/icons?i=react"/>
-
-<img src="https://skillicons.dev/icons?i=nodejs"/>
-
+<img src="https://skillicons.dev/icons?i=react" height="55"/>
+<img src="https://skillicons.dev/icons?i=nodejs" height="55"/>
 </p>
 
 ---
 
-## 🗄️ Database
+### 🗄️ Database
 
 <p>
-
-<img src="https://skillicons.dev/icons?i=postgres"/>
-
-<img src="https://skillicons.dev/icons?i=mysql"/>
-
+<img src="https://skillicons.dev/icons?i=postgres" height="55"/>
+<img src="https://skillicons.dev/icons?i=mysql" height="55"/>
 </p>
 
 ---
 
-## 🛠️ Tools
+### 🛠 Tools
 
 <p>
-
-<img src="https://skillicons.dev/icons?i=github"/>
-
-<img src="https://skillicons.dev/icons?i=vscode"/>
-
-<img src="https://img.shields.io/badge/Antigravity-000000?style=for-the-badge"/>
-
+<img src="https://skillicons.dev/icons?i=git" height="55"/>
+<img src="https://skillicons.dev/icons?i=github" height="55"/>
+<img src="https://skillicons.dev/icons?i=vscode" height="55"/>
+<img src="https://img.shields.io/badge/Antigravity-111827?style=for-the-badge"/>
 </p>
 
----
-
-# 🌱 Interests
-
-- 🤖 Artificial Intelligence
-- 📊 Data Science
-- 📈 Data Analytics
-- 🌐 Full Stack Development
-- 🚀 Startup Development
-- ☁️ Cloud Computing
+</div>
 
 ---
 
-# 🎯 Currently Exploring
+# 🚀 Areas of Expertise
 
-- Machine Learning
-- Deep Learning
-- Cloud Deployment
-- Scalable Web Applications
-- Product Engineering
+<div align="center">
+
+| 💡 Domain                  | 🚀 Focus                                |
+| -------------------------- | --------------------------------------- |
+| 🤖 Artificial Intelligence | Building practical AI-powered solutions |
+| 📊 Data Science            | Data-driven problem solving             |
+| 📈 Data Analytics          | Visualization & Business Insights       |
+| 💻 Software Development    | Modern Web Applications                 |
+| 🌐 Full Stack Development  | End-to-End Product Development          |
+| 🎯 Product Development     | Designing student-focused platforms     |
+| 🚀 Startup Building        | Creating scalable digital products      |
+
+</div>
 
 ---
 
 # 📈 GitHub Analytics
 
-<p align="center">
+<div align="center">
 
-<img height="180em" src="https://github-readme-stats.vercel.app/api?username=Abhilash-4143&show_icons=true&theme=tokyonight&hide_border=true&rank_icon=github"/>
+<img height="170" src="https://github-readme-stats.vercel.app/api?username=Abhilash-4143&show_icons=true&theme=tokyonight&hide_border=true&include_all_commits=true&count_private=true"/>
 
-<img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Abhilash-4143&layout=compact&theme=tokyonight&hide_border=true"/>
+<img height="170" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Abhilash-4143&layout=compact&theme=tokyonight&hide_border=true&langs_count=8"/>
 
-</p>
+</div>
+
+> **If these cards don't appear:** the GitHub Readme Stats service is temporarily busy. The links are correct and usually load after a refresh or later.
 
 ---
 
 # 🔥 GitHub Streak
 
-<p align="center">
+<div align="center">
 
 <img src="https://streak-stats.demolab.com?user=Abhilash-4143&theme=tokyonight&hide_border=true"/>
 
-</p>
+</div>
 
 ---
 
-# 📊 Contribution Graph
+# 📊 Contribution Activity
 
-<p align="center">
+<div align="center">
 
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=Abhilash-4143&theme=tokyo-night"/>
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=Abhilash-4143&theme=tokyo-night&hide_border=true"/>
 
-</p>
+</div>
+
+---
+
+# 🏆 GitHub Achievements
+
+<div align="center">
+
+<img src="https://github-profile-trophy.vercel.app/?username=Abhilash-4143&theme=algolia&no-frame=true&margin-w=12&margin-h=12&row=2&column=4"/>
+
+</div>
+
+> If the trophies don't load, it's because the public trophy service is temporarily unavailable—not because of your README.
+
+---
+
+# 📌 Featured Projects
+
+<table>
+<tr>
+
+<td align="center" width="33%">
+
+### 🚀 SkillInterns
+
+Virtual Internship Platform
+
+<a href="https://skillinterns.vercel.app/">
+<img src="https://img.shields.io/badge/Open%20Website-2563EB?style=for-the-badge"/>
+</a>
+
+</td>
+
+<td align="center" width="33%">
+
+### 📚 DakshaLearn
+
+Learning Management Platform
+
+<a href="https://dakshalearn.vercel.app/">
+<img src="https://img.shields.io/badge/Open%20Website-16A34A?style=for-the-badge"/>
+</a>
+
+</td>
+
+<td align="center" width="33%">
+
+### 🎓 TruthCampus
+
+Student Career Platform
+
+<a href="https://truth-campus.vercel.app/">
+<img src="https://img.shields.io/badge/Open%20Website-7C3AED?style=for-the-badge"/>
+</a>
+
+</td>
+
+</tr>
+</table>
+
+---
+
+# 🎯 Current Focus
+
+```text
+🚀 Building scalable educational platforms
+
+🤖 Exploring Artificial Intelligence
+
+📊 Advancing Data Science skills
+
+💻 Developing production-ready web applications
+
+🌍 Creating technology that empowers students
+
+📚 Continuous learning and innovation
+```
 
 ---
 
 # 🌐 Connect With Me
 
-<p align="center">
+<div align="center">
 
 <a href="https://www.linkedin.com/in/01abhilash/">
 <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"/>
@@ -206,30 +329,82 @@ A student career ecosystem designed to simplify learning, career guidance, inter
 </a>
 
 <a href="https://dakshalearn.vercel.app/">
-<img src="https://img.shields.io/badge/DakshaLearn-10B981?style=for-the-badge"/>
+<img src="https://img.shields.io/badge/DakshaLearn-16A34A?style=for-the-badge"/>
 </a>
 
 <a href="https://truth-campus.vercel.app/">
-<img src="https://img.shields.io/badge/TruthCampus-9333EA?style=for-the-badge"/>
+<img src="https://img.shields.io/badge/TruthCampus-7C3AED?style=for-the-badge"/>
 </a>
 
+</div>
+
+---
+
+> **"Building products that create opportunities, inspire learning, and make a lasting impact through technology."**
+
+# 🐍 Contribution Snake
+
+<p align="center">
+
+<img src="https://raw.githubusercontent.com/Abhilash-4143/Abhilash-4143/output/github-contribution-grid-snake.svg"/>
+
 </p>
-
----
-
-# 💬 Quote
-
-> **"Building technology that empowers students, creates opportunities, and transforms ideas into impactful digital products."**
-
----
+📊 Profile Summary
 
 <div align="center">
 
-### ⭐ Thank you for visiting my profile!
-
-### 🚀 Building meaningful products, one commit at a time.
-
-<img src="https://capsule-render.vercel.app/api?type=waving&height=120&section=footer&color=0:2563EB,100:7C3AED"/>
+<img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Abhilash-4143&theme=github_dark"/>
 
 </div>
-```
+
+📈 Repository Statistics
+
+<div align="center">
+
+<img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=Abhilash-4143&theme=github_dark"/>
+
+<img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=Abhilash-4143&theme=github_dark"/>
+
+</div>
+
+⚡ Development Metrics
+
+<div align="center">
+
+<img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=Abhilash-4143&theme=github_dark"/>
+
+<img src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=Abhilash-4143&theme=github_dark&utcOffset=5.5"/>
+
+</div>
+
+🎖️ Achievements
+
+<div align="center">
+
+<img src="https://img.shields.io/badge/Founder-SkillInterns-2563EB?style=for-the-badge"/>
+
+<img src="https://img.shields.io/badge/Creator-DakshaLearn-16A34A?style=for-the-badge"/>
+
+<img src="https://img.shields.io/badge/Founder-TruthCampus-7C3AED?style=for-the-badge"/>
+
+<img src="https://img.shields.io/badge/B.Tech-Data%20Science-F59E0B?style=for-the-badge"/>
+
+</div>
+
+💡 Favorite Quote
+
+<div align="center">
+
+**"Great products don't just solve problems—they create opportunities for millions."**
+
+</div>
+
+🌟 Thank You for Visiting
+
+<div align="center">
+
+If you like my work, consider ⭐ starring my repositories!
+
+<img src="https://capsule-render.vercel.app/api?type=waving&section=footer&height=140&color=gradient&customColorList=6,11,20,24,30"/>
+
+</div>
