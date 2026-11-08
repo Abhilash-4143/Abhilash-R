@@ -8,6 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <!-- EmailJS (contact form only) -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
   <style>
     /* ============================================================
@@ -936,10 +938,46 @@
 
     reveals.forEach(el => revealObserver.observe(el));
 
-    /* ── Contact form → /api/contact (Resend) ── */
+    /* ── Contact form → EmailJS ── */
     const form = document.getElementById('contact-form');
     const formMsg = document.getElementById('form-msg');
     let isSubmitting = false;
+    let emailJsConfig = null;
+    let emailJsConfigFailed = false;
+
+    // Fetch public EmailJS identifiers once (from /api/emailjs-config, which
+    // reads VITE_EMAILJS_* env vars server-side). Cached in memory.
+    fetch('/api/emailjs-config')
+      .then(async (res) => {
+        let data = {};
+        try { data = await res.json(); } catch { data = {}; }
+        if (res.ok && data.configured) {
+          emailJsConfig = data;
+          try { emailjs.init({ publicKey: data.publicKey }); } catch (err) { console.warn('[contact] EmailJS init failed', err); }
+        } else {
+          emailJsConfigFailed = true;
+          console.warn('[contact] EmailJS not configured', data && data.error);
+        }
+      })
+      .catch(() => { emailJsConfigFailed = true; });
+
+    // Client-side throttling: minimum gap between sends + hourly cap.
+    const MIN_INTERVAL_MS = 5000;
+    const HOUR_MS = 60 * 60 * 1000;
+    const MAX_PER_HOUR = 5;
+    let lastSendAt = 0;
+    function submitTimes() {
+      try {
+        const raw = localStorage.getItem('contact-submit-times');
+        const arr = raw ? JSON.parse(raw) : [];
+        return Array.isArray(arr) ? arr.filter((t) => Date.now() - t < HOUR_MS) : [];
+      } catch { return []; }
+    }
+    function recordSubmit() {
+      const arr = submitTimes();
+      arr.push(Date.now());
+      try { localStorage.setItem('contact-submit-times', JSON.stringify(arr)); } catch { /* ignore */ }
+    }
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -949,6 +987,8 @@
       const subject = form.querySelector('#cf-subject').value.trim();
       const message = form.querySelector('#cf-message').value.trim();
       const company = (form.querySelector('[name="company"]') || {}).value || '';
+
+      if (company) { form.reset(); showMsg('Message sent. Thank you — I will get back to you within 24 hours.', 'success'); return; }
 
       if (!name || !email || !subject || !message) {
         showMsg('Please fill in all required fields.', 'error');
@@ -962,6 +1002,22 @@
         showMsg('Please enter a valid email address.', 'error');
         return;
       }
+      if (/[\r\n]/.test(name) || /[\r\n]/.test(subject)) {
+        showMsg('Invalid characters in the form.', 'error');
+        return;
+      }
+      if (Date.now() - lastSendAt < MIN_INTERVAL_MS) {
+        showMsg('Please wait a few seconds before sending again.', 'error');
+        return;
+      }
+      if (submitTimes().length >= MAX_PER_HOUR) {
+        showMsg('Too many messages sent from this device. Please try again later.', 'error');
+        return;
+      }
+      if (!window.emailjs) {
+        showMsg('Email service could not be loaded. Please check your connection and try again.', 'error');
+        return;
+      }
 
       const btn = form.querySelector('.form-submit');
       const originalBtnHTML = btn.innerHTML;
@@ -971,34 +1027,36 @@
       btn.innerHTML = '<i class="fas fa-spinner fa-spin" aria-hidden="true"></i> Sending...';
       showMsg('', '');
 
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 20000);
-
       try {
-        const res = await fetch('/api/contact', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name, email, subject, message, company }),
-          signal: controller.signal,
-        });
-        clearTimeout(timeoutId);
-        let data = {};
-        try { data = await res.json(); } catch { data = {}; }
-        if (res.ok && data.success) {
+        if (!emailJsConfig) {
+          if (emailJsConfigFailed) {
+            showMsg('Email service is not configured yet. Please try again later.', 'error');
+          } else {
+            showMsg('Still connecting to the email service… please wait and try again.', 'error');
+          }
+          return;
+        }
+        // Recipient is fixed by the EmailJS template (To: your university
+        // address); Reply-To is set on the template to {{from_email}}.
+        const params = { from_name: name, from_email: email, subject, message };
+        const result = await window.emailjs.send(
+          emailJsConfig.serviceId,
+          emailJsConfig.templateId,
+          params
+        );
+        if (result && (result.status === 200 || result.text === 'OK')) {
+          lastSendAt = Date.now();
+          recordSubmit();
           form.reset();
           showMsg('Message sent. Thank you — I will get back to you within 24 hours.', 'success');
         } else {
-          // Diagnostic aid (no secrets): open devtools console to see status + server detail.
-          console.warn('[contact] submission failed', { status: res.status, error: data.error, detail: data.detail });
-          showMsg(data.error || 'Something went wrong. Please try again.', 'error');
+          // EmailJS resolved but did not confirm OK — treat as failure.
+          console.warn('[contact] EmailJS unexpected result', result);
+          showMsg('Something went wrong. Please try again.', 'error');
         }
       } catch (err) {
-        clearTimeout(timeoutId);
-        if (err && err.name === 'AbortError') {
-          showMsg('Request timed out. Please check your connection and try again.', 'error');
-        } else {
-          showMsg('Network error. Your message was not sent — please try again.', 'error');
-        }
+        console.warn('[contact] EmailJS send failed', err);
+        showMsg('Could not send your message. Please try again.', 'error');
       } finally {
         isSubmitting = false;
         btn.disabled = false;

@@ -1,1 +1,8 @@
-{"name": "abhilash-portfolio", "version": "1.0.0", "private": true, "description": "Abhilash R portfolio — static site with secure contact API", "engines": {"node": ">=18"}, "scripts": {"dev": "npx vercel dev"}, "dependencies": {"resend": "^4.0.1"}}
+{
+  "name": "abhilash-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Abhilash R portfolio — static site with EmailJS contact form",
+  "engines": { "node": ">=18" },
+  "scripts": { "dev": "npx vercel dev" }
+}

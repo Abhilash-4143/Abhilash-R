@@ -1,58 +1,66 @@
-# Contact-form email setup (Resend + Vercel)
+# Contact-form email setup (EmailJS)
 
-Endpoint: `POST /api/contact` → Resend → `ABHILASH.20241CSE0600@presidencyuniversity.in`.
-All three variables below are **required** and read server-side only.
+The form uses the official `@emailjs/browser` SDK. The recipient
+(`ABHILASH.20241CSE0600@presidencyuniversity.in`) is fixed by your EmailJS
+**template** (To field), and the visitor's address is set as the template's
+**Reply-To** field (`{{from_email}}`), so replies go to the visitor.
 
-## 1. Verify a sending domain in Resend (one-time, ~10 min)
+## 1. Create the EmailJS service, template and key
 
-`onboarding@resend.dev` is **test-only**: Resend delivers it only to your own
-Resend account email (yours: `abhilashg869@gmail.com`) and returns 403 for
-any other recipient such as your Presidency University address. That restriction
-is why production delivery needs your own verified domain.
+1. Go to https://www.emailjs.com/ → sign in → **Email Services** → **Add New Service**.
+   - Provider: **Gmail** (or another connected provider). Connect the account
+     you use to send (this is the "from" mailbox, not the recipient).
+   - Note the **Service ID** (e.g. `service_xxxxxxx`).
+2. **Email Templates** → **Create New Template** → name it (e.g. `Portfolio Contact`).
+   - **To:** `ABHILASH.20241CSE0600@presidencyuniversity.in` (type it literally).
+   - **Reply To:** `{{from_email}}` (so replies go to the visitor).
+   - **Subject:** `[Portfolio] {{subject}}`
+   - **Content:**
+     ```
+     From: {{from_name}} <{{from_email}}>
+     Subject: {{subject}}
 
-1. Go to https://resend.com/domains → **Add Domain** → enter your domain.
-2. Add the DNS records shown (SPF/DKIM) at your DNS host.
-3. Wait until it shows **Verified**.
-4. Create a key at Resend → **API Keys** (copy the `re_...` value once).
+     {{message}}
+     ```
+   - Save → note the **Template ID** (e.g. `template_xxxxxxx`).
+3. **Account → General** (or Settings → General) → copy the **Public Key**
+   (e.g. `user_...`). EmailJS has no private key in the browser flow — don't
+   share anything labelled private.
 
-## 2. Enter the variables in Vercel (exact location)
+## 2. Restrict origins (security)
 
-- Open your Vercel **Dashboard** → project **abhilash-r** (the one behind
-  https://abhilash-r.vercel.app/).
-- Click **Settings** (top tab) → **Environment Variables** (left sidebar).
-- For each variable, click **Add Variable**, type name + value, check all
-  three scopes (**Production, Preview, Development**), click **Save**:
+EmailJS Dashboard → **Settings** → **Allowed Origins** → add:
+- `https://abhilash-r.vercel.app`
+- `http://localhost:3000` (or your local dev port, e.g. `http://localhost:5173`)
+
+Leave default origins off. This stops other sites from using your keys.
+
+## 3. Enter the variables in Vercel (exact location)
+
+- Vercel Dashboard → project **abhilash-r** → **Settings** →
+  **Environment Variables** → **Add Variable** for each (check Production,
+  Preview, Development) → **Save**:
 
 | Variable | Value |
 |---|---|
-| `RESEND_API_KEY` | `re_...` from step 1 |
-| `CONTACT_EMAIL` | `ABHILASH.20241CSE0600@presidencyuniversity.in` |
-| `RESEND_FROM` | `Abhilash <hello@yourdomain.com>` (verified domain from step 1) |
+| `VITE_EMAILJS_SERVICE_ID` | `service_xxxxxxx` |
+| `VITE_EMAILJS_TEMPLATE_ID` | `template_xxxxxxx` |
+| `VITE_EMAILJS_PUBLIC_KEY` | `user_...` |
 
-- Changing variables does **not** redeploy automatically. Click
-  **Deployments** → `···` on the latest deployment → **Redeploy**.
+- Then **Deployments** → `···` → **Redeploy** (env changes never auto-redeploy).
+- The `VITE_` names are read server-side by `api/emailjs-config.js` and
+  delivered to the browser at runtime, so no build step is required.
 
-> Do not add these to `index.html` or any frontend file, and never prefix them
-> with `VITE_`. Never commit a real key. `.env.example` is values-free on purpose.
+## 4. Verify
 
-## 3. Verify it worked
+1. Open the live site → submit the form → success appears only when EmailJS
+   returns OK; your text is kept on failure and cleared on success.
+2. Check **EmailJS Dashboard → Email Logs** for the accepted send and the
+   Presidency inbox (watch spam on first send).
+3. If it errors, open DevTools Console → `[contact] ...` and check
+   EmailJS Logs for the reason (usually: wrong IDs, template variables
+   mismatch, or origin not allowed).
 
-1. Submit the live form once with a real message.
-2. Check **Resend → Emails**: an entry with status **Accepted** + an email ID
-   means Resend accepted it; delivery to the inbox follows after (see below).
-3. Check the Presidency inbox (watch spam/promotions on first send).
-4. If the form shows a configuration error instead, open **Vercel → Logs**
-   and find the `[contact] ...` line (masked recipient, sender domain only —
-   no key or message body is logged).
-
-Note: **API acceptance ≠ inbox delivery.** Resend logs prove acceptance and
-give you the email ID + delivery events to track (sent/delivered/bounced).
-
-## 4. Behaviour (unchanged UI)
-
-- Loading state + disabled button/inputs while sending; resubmits within
-  60 s of the same message are suppressed as duplicates.
-- Success shown **only** when Resend returns an email ID; fields reset only then.
-- On failure, your text stays in the form and a plain-language error is shown.
-- Server checks: POST-only, field/email validation, honeypot, 5/min/IP limit,
-  missing/unverified-sender → clear configuration errors (no fake success).
+Form protections: same fields/UI, loading state, duplicate guard, honeypot,
+5-second minimum gap and 5/hour client-side cap (pure client SDKs cannot do
+server-side throttling — origins + template To field are the real controls).
