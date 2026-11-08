@@ -1,20 +1,22 @@
 // Secure contact endpoint — POST /api/contact
 // Uses Resend. Never expose RESEND_API_KEY to the browser.
-// Env: RESEND_API_KEY (required), CONTACT_EMAIL (destination), RESEND_FROM (optional verified sender)
-//
-// NOTE — Resend test mode:
-//   The shared `onboarding@resend.dev` sender can ONLY deliver to the email
-//   address of your Resend account. Sending from it to any other inbox
-//   returns 403 "You can only send testing emails to your own email address..."
-//   To deliver to CONTACT_EMAIL you must verify your own domain in Resend
-//   (resend.com/domains) and set RESEND_FROM to an address on that domain.
+// Env (all required):
+//   RESEND_API_KEY — Resend API key (secret, server-only)
+//   CONTACT_EMAIL  — destination inbox (your Presidency University address)
+//   RESEND_FROM    — sender on a domain VERIFIED in Resend (resend.com/domains)
+// RESEND_FROM has NO fallback on purpose: onboarding@resend.dev can only
+// deliver to your own Resend account email, so falling back to it would
+// silently fail for the Presidency University recipient.
 'use strict';
 
 const { Resend } = require('resend');
+const crypto = require('crypto');
 
 const RATE_LIMIT_WINDOW_MS = 60 * 1000;
 const RATE_LIMIT_MAX = 5;
+const DUPLICATE_WINDOW_MS = 60 * 1000;
 const hits = new Map(); // ip+email -> timestamps[]
+const sentHashes = new Map(); // contentHash -> { timestamp, id }
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -36,6 +38,11 @@ function emailDomain(email) {
   const m = String(email || '').match(/@([^<>\s]+)/);
   return m ? m[1] : '(none)';
 }
+// Extract the raw email address from "Name <email>" or plain "email".
+function extractFromEmail(from) {
+  const m = String(from || '').match(/[\w.+-]+@[^\s<>"]+/);
+  return m ? m[0] : '';
+}
 
 function rateLimited(key) {
   const now = Date.now();
@@ -47,6 +54,14 @@ function rateLimited(key) {
   arr.push(now);
   hits.set(key, arr);
   return false;
+}
+
+function isDuplicate(key) {
+  const entry = sentHashes.get(key);
+  if (!entry) return null;
+  if (Date.now() - entry.timestamp < DUPLICATE_WINDOW_MS) return entry;
+  sentHashes.delete(key);
+  return null;
 }
 
 function getIp(req) {
@@ -63,16 +78,20 @@ function parseBody(req) {
   return req.body;
 }
 
+function configError(missing, guidance) {
+  console.error('[contact] configuration error', { missing });
+  return { message: `Server is not configured: ${missing} is missing. ${guidance}` };
+}
+
 // Map a Resend failure to a safe, actionable client message + log detail.
-function describeResendError(error, testingMode) {
+function describeResendError(error) {
   const errName = (error && error.name) || 'unknown';
   const errMessage = (error && error.message) || 'Unknown Resend error';
-  const statusCode = (error && error.statusCode) || null;
   if (/You can only send testing emails/i.test(errMessage)) {
     return {
       status: 403,
       clientMessage:
-        'Email delivery is in Resend test mode: onboarding@resend.dev can only send to your own Resend account email. Verify your own domain in Resend (resend.com/domains) and set RESEND_FROM to an address on that domain.',
+        'Email delivery is in Resend test mode. Verify your own domain in Resend (resend.com/domains) and set RESEND_FROM to an address on that domain.',
       detail: errMessage,
     };
   }
@@ -92,7 +111,6 @@ module.exports = async function handler(req, res) {
   res.setHeader('X-Content-Type-Options', 'nosniff');
 
   if (req.method === 'OPTIONS') {
-    // same-origin only; answer preflight without CORS wildcard
     res.statusCode = 204;
     return res.end();
   }
@@ -101,7 +119,6 @@ module.exports = async function handler(req, res) {
     return res.end(JSON.stringify({ success: false, error: 'Method not allowed.' }));
   }
 
-  // Reject oversized payloads
   const len = Number((req.headers && req.headers['content-length']) || 0);
   if (len > 10000) {
     res.statusCode = 413;
@@ -110,7 +127,6 @@ module.exports = async function handler(req, res) {
 
   const body = parseBody(req);
 
-  // Honeypot: bots fill hidden "company" field — silently accept, don't send
   if (body.company && String(body.company).trim() !== '') {
     res.statusCode = 200;
     return res.end(JSON.stringify({ success: true }));
@@ -126,7 +142,6 @@ module.exports = async function handler(req, res) {
   if (!email || email.length > 254 || !EMAIL_RE.test(email)) errors.push('Please enter a valid email address.');
   if (!subject || subject.length < 3 || subject.length > 150) errors.push('Please enter a subject (3–150 characters).');
   if (!message || message.length < 10 || message.length > 5000) errors.push('Please write a message (10–5,000 characters).');
-  // Block obvious link-spam / header injection
   if (/[\r\n]/.test(name) || /[\r\n]/.test(subject) || /[\r\n]/.test(email)) errors.push('Invalid characters in the form.');
   if (errors.length) {
     console.log('[contact] validation failed', { count: errors.length });
@@ -141,27 +156,53 @@ module.exports = async function handler(req, res) {
     return res.end(JSON.stringify({ success: false, error: 'Too many messages sent. Please wait a minute and try again.' }));
   }
 
-  const apiKey = process.env.RESEND_API_KEY;
-  const to = process.env.CONTACT_EMAIL || 'ABHILASH.20241CSE0600@presidencyuniversity.in';
-  const from = process.env.RESEND_FROM || 'Portfolio Contact <onboarding@resend.dev>';
-  const testingMode = /@resend\.dev/i.test(from);
+  const duplicateKey = crypto.createHash('sha256').update(`${email}|${subject}|${message}`).digest('hex');
+  const prior = isDuplicate(duplicateKey);
+  if (prior) {
+    console.log('[contact] duplicate submission suppressed', { id: prior.id || null });
+    return res.end(JSON.stringify({ success: true, id: prior.id || null, duplicate: true }));
+  }
 
-  // Safe config diagnostics — presence flags + domains only (no secrets/contents).
+  const apiKey = process.env.RESEND_API_KEY;
+  const to = process.env.CONTACT_EMAIL;
+  const from = process.env.RESEND_FROM;
+  const fromEmail = extractFromEmail(from);
+  const fromDomain = emailDomain(fromEmail);
+
   console.log('[contact] send attempt', {
     keySet: Boolean(apiKey),
-    to: maskEmail(to),
-    toDomain: emailDomain(to),
-    fromDomain: emailDomain(from),
-    testingMode,
+    toSet: Boolean(to),
+    fromSet: Boolean(from),
+    toDomain: to ? emailDomain(to) : '(unset)',
+    fromDomain: from ? fromDomain : '(unset)',
   });
 
-  if (!apiKey) {
-    console.error('[contact] aborted: RESEND_API_KEY is not set in this deployment');
+  const missing = [];
+  if (!apiKey) missing.push('RESEND_API_KEY');
+  if (!to || !EMAIL_RE.test(to)) missing.push('CONTACT_EMAIL');
+  if (!from || !EMAIL_RE.test(fromEmail)) missing.push('RESEND_FROM');
+  if (missing.length) {
+    const cfg = configError(missing.join(' and '), 'Set it in Vercel → Project Settings → Environment Variables, then redeploy.');
     res.statusCode = 500;
-    return res.end(JSON.stringify({ success: false, error: 'Email service is not configured yet. Please try again later.' }));
+    return res.end(JSON.stringify({ success: false, error: cfg.message }));
   }
-  if (testingMode) {
-    console.warn('[contact] warning: sender is onboarding@resend.dev — Resend will only deliver if the recipient exactly matches your Resend account email.');
+  if (/^resend\.dev$/i.test(fromDomain)) {
+    console.error('[contact] configuration error: RESEND_FROM uses resend.dev test sender (not allowed for production delivery)');
+    res.statusCode = 403;
+    return res.end(JSON.stringify({
+      success: false,
+      error: 'Email delivery is in Resend test mode: onboarding@resend.dev can only send to your own Resend account email. Verify your own domain in Resend (resend.com/domains) and set RESEND_FROM to an address on that domain.',
+      detail: 'RESEND_FROM must be an address on a domain verified at resend.com/domains.',
+    }));
+  }
+  if (/^(gmail\.com|presidencyuniversity\.in)$/i.test(fromDomain)) {
+    console.error('[contact] configuration error: RESEND_FROM domain is not a verified domain', { fromDomain });
+    res.statusCode = 500;
+    return res.end(JSON.stringify({
+      success: false,
+      error: 'Sender domain is not verified in Resend. Open resend.com/domains, verify the domain, and set RESEND_FROM to an address on it.',
+      detail: 'Do not use a Gmail or university address as RESEND_FROM.',
+    }));
   }
 
   try {
@@ -184,20 +225,20 @@ module.exports = async function handler(req, res) {
       replyTo: email,
     });
     if (error) {
-      const described = describeResendError(error, testingMode);
+      const described = describeResendError(error);
       console.error('[contact] Resend rejected the email', {
         name: error.name || 'unknown',
         message: error.message || 'unknown',
         statusCode: error.statusCode || null,
-        testingMode,
-        hint: described.clientMessage,
       });
       res.statusCode = described.status;
       return res.end(JSON.stringify({ success: false, error: described.clientMessage, detail: described.detail }));
     }
-    console.log('[contact] Resend accepted the email', { id: (data && data.id) || null });
+    const id = (data && data.id) || null;
+    sentHashes.set(duplicateKey, { timestamp: Date.now(), id });
+    console.log('[contact] Resend accepted the email', { id });
     res.statusCode = 200;
-    return res.end(JSON.stringify({ success: true, id: data && data.id }));
+    return res.end(JSON.stringify({ success: true, id }));
   } catch (err) {
     console.error('[contact] unexpected handler error', { name: err && err.name, message: err && err.message });
     res.statusCode = 502;
@@ -205,6 +246,6 @@ module.exports = async function handler(req, res) {
   }
 };
 
-// Exported for local tests
 module.exports.describeResendError = describeResendError;
 module.exports.maskEmail = maskEmail;
+module.exports.extractFromEmail = extractFromEmail;
