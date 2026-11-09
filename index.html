@@ -945,21 +945,36 @@
     let emailJsConfig = null;
     let emailJsConfigFailed = false;
 
+    // Public EmailJS identifiers (service / template / public key are public
+    // by design — no private key exists here). The server endpoint below
+    // (reading VITE_EMAILJS_* env vars you set in Vercel) takes precedence;
+    // these values are only a fallback so the form works before the
+    // environment variables are added.
+    const FALLBACK_EMAILJS = {
+      serviceId: 'service_0wefwfs',
+      templateId: 'template_gkshfxv',
+      publicKey: 'dHbQIecfqHjWw-na2',
+    };
+    function applyEmailJsConfig(data) {
+      emailJsConfig = data;
+      try { emailjs.init({ publicKey: data.publicKey }); } catch (err) { console.warn('[contact] EmailJS init failed', err); }
+    }
+
     // Fetch public EmailJS identifiers once (from /api/emailjs-config, which
     // reads VITE_EMAILJS_* env vars server-side). Cached in memory.
+    // If the endpoint isn't configured yet, fall back to the public IDs above.
     fetch('/api/emailjs-config')
       .then(async (res) => {
         let data = {};
         try { data = await res.json(); } catch { data = {}; }
         if (res.ok && data.configured) {
-          emailJsConfig = data;
-          try { emailjs.init({ publicKey: data.publicKey }); } catch (err) { console.warn('[contact] EmailJS init failed', err); }
+          applyEmailJsConfig(data);
         } else {
-          emailJsConfigFailed = true;
-          console.warn('[contact] EmailJS not configured', data && data.error);
+          applyEmailJsConfig(FALLBACK_EMAILJS);
+          console.warn('[contact] using fallback EmailJS identifiers (set VITE_EMAILJS_* in Vercel to override)', data && data.error);
         }
       })
-      .catch(() => { emailJsConfigFailed = true; });
+      .catch(() => { applyEmailJsConfig(FALLBACK_EMAILJS); });
 
     // Client-side throttling: minimum gap between sends + hourly cap.
     const MIN_INTERVAL_MS = 5000;
@@ -1029,11 +1044,16 @@
 
       try {
         if (!emailJsConfig) {
-          if (emailJsConfigFailed) {
-            showMsg('Email service is not configured yet. Please try again later.', 'error');
-          } else {
-            showMsg('Still connecting to the email service… please wait and try again.', 'error');
-          }
+          // Config fetch still pending — retry the endpoint once before giving up.
+          try {
+            const res = await fetch('/api/emailjs-config');
+            const data = await res.json();
+            if (res.ok && data.configured) applyEmailJsConfig(data);
+            else applyEmailJsConfig(FALLBACK_EMAILJS);
+          } catch { applyEmailJsConfig(FALLBACK_EMAILJS); }
+        }
+        if (!emailJsConfig) {
+          showMsg('Email service is not configured yet. Please try again later.', 'error');
           return;
         }
         // Recipient is fixed by the EmailJS template (To: your university
